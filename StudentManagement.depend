@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1489674469 source:e:\codeblocks\studentmanagement\main.cpp
+	"file_io.h"
+
+1489674261 e:\codeblocks\studentmanagement\id_card.h
+	<iostream>
+	<cstring>
+
+1489669922 e:\codeblocks\studentmanagement\id_card_list.h
+	"id_card.h"
+
+1489674824 e:\codeblocks\studentmanagement\file_io.h
+	<fstream>
+	<sstream>
+	"id_card_list.h"
+
