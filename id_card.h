@@ -27,6 +27,11 @@ public:
         std::cout << "¿¨ºÅ£º" << card_id_ << "             ÓĞĞ§ÆÚ£º" << validity_date_ << std::endl;
         std::cout << "-----------------------------------------------" <<std::endl;
     }
+    string GetInfoString()
+    {
+        string info_str = name_ + " " + sex_ + " " + college_ + " " + major_ + " " + identity_ + " " + validity_date_ + " " + student_id_ + " " + card_id_;
+        return info_str;
+    }
 private:
     string name_;
     string sex_;

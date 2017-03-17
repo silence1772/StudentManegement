@@ -33,10 +33,13 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="controller.h" />
+		<Unit filename="display.h" />
 		<Unit filename="file_io.h" />
 		<Unit filename="id_card.h" />
 		<Unit filename="id_card_list.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="point.h" />
+		<Unit filename="tools.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

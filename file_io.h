@@ -8,28 +8,8 @@
 class FileIO
 {
 public:
-
-    int read()
+    int read(IDCardList *L)
     {
-        /*string name, sex, college, major, identity, validity_date;
-        long long student_id, card_id;
-        FILE *fp;
-        fp = fopen("student_data.txt","r");
-        if (fp == NULL)
-        {
-            std::cout << "无法加载数据！" << std::endl;
-            return 0;
-        }
-        while (!feof(fp))
-        {
-            fscanf(fp, "%s%s%s%s%s%s%lld%lld", &name, &sex, &college, &major, &identity, &validity_date, &student_id, &card_id);
-            IDCardList *a = new IDCardList();
-            IDCard *b = new IDCard(name, sex, college, major, identity, validity_date, student_id, card_id);
-            a->Insert(b);
-            a->Load();
-        }*/
-        std::ifstream fin;
-        std::string line;
         fin.open("student_data.txt");
         if (!fin.is_open())
         {
@@ -41,16 +21,45 @@ public:
             std::istringstream record(line);
             string name, sex, college, major, identity, validity_date, student_id, card_id;
             record >> name >> sex >> college >> major >> identity >> validity_date >> student_id >> card_id;
-
-            IDCardList *a = new IDCardList();
-            IDCard *b = new IDCard(name, sex, college, major, identity, validity_date, student_id, card_id);
-            a->Insert(b);
-            a->Load();
+            IDCard *node = new IDCard(name, sex, college, major, identity, validity_date, student_id, card_id);
+            L->Insert(node);
         }
+        //L->Load();
+        fin.close();
         return 0;
     }
-
+    int write(IDCardList *L)
+    {
+        fout.open("student_data1.txt", std::ios::out);
+        if (!fout.is_open())
+        {
+            std::cout << "无法打开文件！" << std::endl;
+            return 0;
+        }
+        IDCard *ptr;
+        ptr = L->head_;
+        while (ptr != NULL)
+        {
+            fout << ptr->GetInfoString() << std::endl;
+            ptr = ptr->next_;
+        }
+        fout.close();
+        return 0;
+    }
+    int add(IDCard *node)
+    {
+        fout.open("student_data1.txt", std::ios::app);
+        if (!fout.is_open())
+        {
+            std::cout << "无法打开文件！" << std::endl;
+            return 0;
+        }
+        fout << node->GetInfoString() << std::endl;
+        return 0;
+    }
 private:
-
+    std::ifstream fin;
+    std::ofstream fout;
+    std::string line;
 };
 #endif // FILE_IO_H

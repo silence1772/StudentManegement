@@ -8,6 +8,7 @@ class IDCardList
 {
 public:
     IDCardList() : head_(NULL), length_(0) { }
+    friend class FileIO;
     void Insert(IDCard *p)
     {
         if (head_ != NULL)
