@@ -1,8 +1,11 @@
 # depslib dependency file v1.0
-1489762559 source:e:\codeblocks\studentmanagement\main.cpp
+1489847866 source:e:\codeblocks\studentmanagement\main.cpp
 	"file_io.h"
 	"tools.h"
 	"display.h"
+	"menu.h"
+	<stdlib.h>
+	"input.h"
 
 1489758119 e:\codeblocks\studentmanagement\id_card.h
 	<iostream>
@@ -16,15 +19,24 @@
 	<sstream>
 	"id_card_list.h"
 
-1489760387 e:\codeblocks\studentmanagement\tools.h
+1489817066 e:\codeblocks\studentmanagement\tools.h
 	<windows.h>
 	<stdio.h>
 
-1489762984 e:\codeblocks\studentmanagement\display.h
+1489838441 e:\codeblocks\studentmanagement\display.h
 	"point.h"
 	<vector>
+	<windows.h>
 
-1489762128 e:\codeblocks\studentmanagement\point.h
+1489824815 e:\codeblocks\studentmanagement\point.h
 	"tools.h"
 	<iostream>
+
+1489824744 e:\codeblocks\studentmanagement\menu.h
+	"tools.h"
+	<iostream>
+	<conio.h>
+
+1489851716 e:\codeblocks\studentmanagement\input.h
+	"file_io.h"
 

@@ -37,7 +37,9 @@
 		<Unit filename="file_io.h" />
 		<Unit filename="id_card.h" />
 		<Unit filename="id_card_list.h" />
+		<Unit filename="input.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="menu.h" />
 		<Unit filename="point.h" />
 		<Unit filename="tools.h" />
 		<Extensions>

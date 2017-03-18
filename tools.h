@@ -28,18 +28,10 @@ void SetCursorPosition2(const int x, const int y)//…Ë÷√¡Ω±∂π‚±ÍŒª÷√£¨“ÚŒ™°∞°ˆ°±’
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), position);
 }
 
-void SetColor(int colorID)//…Ë÷√Œƒ±æ—’…´
+void SetColor(unsigned short forecolor, unsigned short backcolor = 0)//…Ë÷√Œƒ±æ—’…´
 {
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), colorID);
+    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), forecolor + backcolor *0x10);
 }
 
-void SetBackColor()//…Ë÷√Œƒ±æ±≥æ∞…´
-{
-    SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),
-                            FOREGROUND_BLUE |
-                            BACKGROUND_BLUE |
-                            BACKGROUND_GREEN |
-                            BACKGROUND_RED );
-}
 
 #endif // TOOLS_H

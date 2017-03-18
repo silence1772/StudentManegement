@@ -3,37 +3,72 @@
 
 #include "point.h"
 #include <vector>
+#include <windows.h>
 
 class Display
 {
 public:
-    Display() : pause_time_(0) { }
+    Display() : pause_time_(5) { }
     void PrintMajorInterface()
     {
-        int x = 11;
+        int x = 0;
         int y = 5;
+        int w = 12;
+        int h = 29;
         std::vector<Point> majorinterface;
-        for (int i = 0; i < 37; ++i)
+
+        for (int i = 0; i < w; ++i)
         {
             majorinterface.emplace_back(Point(++x, y));
         }
-        for (int i = 0; i < 27; ++i)
+        for (int i = 0; i < h; ++i)
         {
             majorinterface.emplace_back(Point(x, ++y));
         }
-        for (int i = 0; i < 36; ++i)
+        for (int i = 0; i < w - 1; ++i)
         {
             majorinterface.emplace_back(Point(--x, y));
         }
-        for (int i = 0; i < 26; ++i)
+        for (int i = 0; i < h - 1; ++i)
         {
             majorinterface.emplace_back(Point(x, --y));
         }
 
         for(auto &point : majorinterface)
         {
-            point.Print();
+            point.PrintCircular();
+            Sleep(5);
         }
+
+        x = 13;
+        y = 5;
+        w = 38;
+        h = 29;
+        std::vector<Point>().swap(majorinterface);
+        for (int i = 0; i < w; ++i)
+        {
+            majorinterface.emplace_back(Point(++x, y));
+        }
+        for (int i = 0; i < h; ++i)
+        {
+            majorinterface.emplace_back(Point(x, ++y));
+        }
+        for (int i = 0; i < w - 1; ++i)
+        {
+            majorinterface.emplace_back(Point(--x, y));
+        }
+        for (int i = 0; i < h - 1; ++i)
+        {
+            majorinterface.emplace_back(Point(x, --y));
+        }
+
+        for(auto &point : majorinterface)
+        {
+            point.PrintCircular();
+            Sleep(pause_time_);
+        }
+
+
     }
 
 private:

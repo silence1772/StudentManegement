@@ -20,7 +20,7 @@ public:
     void PrintCircular()//输出圆形
     {
         SetCursorPosition2(x, y);
-        std::cout << "●" ;
+        std::cout << "∷" ;
     }
 
     void Clear()//清除输出
