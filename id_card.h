@@ -26,9 +26,11 @@ public:
                         tmp += c;
                     ++i;
                 }
+                class_id_ = tmp;
            }
-
     class IDCard *next_;
+
+
     void PrintInfo(const int x, const int y)
     {
         SetColor(11);
@@ -50,10 +52,43 @@ public:
         string info_str = name_ + " " + sex_ + " " + college_ + " " + major_ + " " + identity_ + " " + validity_date_ + " " + student_id_ + " " + card_id_;
         return info_str;
     }
+    string GetName()
+    {
+        return name_;
+    }
+    string GetSex()
+    {
+        return sex_;
+    }
+    string GetCollege()
+    {
+        return college_;
+    }
+    string GetMajor()
+    {
+        return major_;
+    }
+    string GetIdentity()
+    {
+        return identity_;
+    }
+    string GetValidity_date()
+    {
+        return validity_date_;
+    }
     string GetStudentID()
     {
         return student_id_;
     }
+    string GetCard_id()
+    {
+        return card_id_;
+    }
+    string GetClassID()
+    {
+        return class_id_;
+    }
+
 private:
     string name_;
     string sex_;

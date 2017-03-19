@@ -40,7 +40,9 @@
 		<Unit filename="input.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="menu.h" />
+		<Unit filename="modify.h" />
 		<Unit filename="point.h" />
+		<Unit filename="query.h" />
 		<Unit filename="tools.h" />
 		<Extensions>
 			<code_completion />

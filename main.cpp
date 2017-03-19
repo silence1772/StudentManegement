@@ -32,15 +32,12 @@ int main()
     /*Input i;
     i.Start();*/
 
-    Modify ww;
+    /*Modify ww;
     ww.Draw();
     ww.InputInfo();
-    ww.Select();
+    ww.Select();*/
 
     Query q;
-    q.Draw();
-    q.InputInfo();
-    q.Select();
-    q.Find();
+    q.Start();
     return 0;
 }

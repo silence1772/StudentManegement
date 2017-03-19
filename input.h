@@ -425,6 +425,7 @@ public:
     }
     void Start()
     {
+        ClearScreen(30, 6, 36, 26);
         bool flag = true;
         while (flag)
         {
