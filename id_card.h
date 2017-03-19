@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <cstring>
+#include "tools.h"
 
 using std::string;
 
@@ -15,22 +16,43 @@ public:
            const string &student_id, const string &card_id)
            : next_(NULL),
            name_(name), sex_(sex), college_(college), major_(major), identity_(identity),
-           validity_date_(validity_date), student_id_(student_id), card_id_(card_id) { }
+           validity_date_(validity_date), student_id_(student_id), card_id_(card_id)
+           {
+                string tmp;
+                int i = 0;
+                for (auto c : student_id_)
+                {
+                    if (i > 3 && i < 10)
+                        tmp += c;
+                    ++i;
+                }
+           }
 
     class IDCard *next_;
-    void PrintInfo()
+    void PrintInfo(const int x, const int y)
     {
-        std::cout << "姓名：" << name_ << std::endl;
-        std::cout << "性别：" << sex_ << "                 学院：" << college_ << std::endl;
-        std::cout << "专业：" << major_ << std::endl;
-        std::cout << "身份：" << identity_ << "             学号：" << student_id_ << std::endl;
-        std::cout << "卡号：" << card_id_ << "             有效期：" << validity_date_ << std::endl;
-        std::cout << "-----------------------------------------------" <<std::endl;
+        SetColor(11);
+        SetCursorPosition(x, y);
+        std::cout << "姓名：" << name_ ;
+        SetCursorPosition(x, y + 1);
+        std::cout << "性别：" << sex_ << "                    学院：" << college_ ;
+        SetCursorPosition(x, y + 2);
+        std::cout << "专业：" << major_ ;
+        SetCursorPosition(x, y + 3);
+        std::cout << "身份：" << identity_ << "                学号：" << student_id_ ;
+        SetCursorPosition(x, y + 4);
+        std::cout << "卡号：" << card_id_ << "                有效期：" << validity_date_ ;
+        SetCursorPosition(x, y + 5);
+        std::cout << "---------------------------------------------------" ;
     }
     string GetInfoString()
     {
         string info_str = name_ + " " + sex_ + " " + college_ + " " + major_ + " " + identity_ + " " + validity_date_ + " " + student_id_ + " " + card_id_;
         return info_str;
+    }
+    string GetStudentID()
+    {
+        return student_id_;
     }
 private:
     string name_;
@@ -41,5 +63,6 @@ private:
     string validity_date_;
     string student_id_;
     string card_id_;
+    string class_id_;
 };
 #endif // ID_CARD_H

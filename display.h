@@ -8,7 +8,7 @@
 class Display
 {
 public:
-    Display() : pause_time_(5) { }
+    Display() : pause_time_(0) { }
     void PrintMajorInterface()
     {
         int x = 0;
@@ -37,7 +37,7 @@ public:
         for(auto &point : majorinterface)
         {
             point.PrintCircular();
-            Sleep(5);
+            Sleep(pause_time_);
         }
 
         x = 13;

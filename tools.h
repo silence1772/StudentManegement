@@ -33,5 +33,16 @@ void SetColor(unsigned short forecolor, unsigned short backcolor = 0)//…Ë÷√Œƒ±æ—
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), forecolor + backcolor *0x10);
 }
 
+void ClearScreen(const int x, const int y, const int width, const int height)
+{
+    SetColor(5);
+    for (int i = 0; i < height + 2; ++i)
+    {
+        SetCursorPosition(x, y + i);
+        for(int j = 0; j < width; ++j)
+            printf("  ");
+    }
+
+}
 
 #endif // TOOLS_H

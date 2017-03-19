@@ -9,6 +9,7 @@ class IDCardList
 public:
     IDCardList() : head_(NULL), length_(0) { }
     friend class FileIO;
+    friend class Query;
     void Insert(IDCard *p)
     {
         if (head_ != NULL)
@@ -30,7 +31,7 @@ public:
         ptr = head_;
         while (ptr != NULL)
         {
-            ptr->PrintInfo();
+            ptr->PrintInfo(13,5);
             ptr = ptr->next_;
         }
     }

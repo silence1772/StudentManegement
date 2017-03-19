@@ -5,6 +5,8 @@
 #include "menu.h"
 #include <stdlib.h>
 #include "input.h"
+#include "modify.h"
+#include "query.h"
 
 int main()
 {
@@ -15,9 +17,9 @@ int main()
 
     std::cout << "test" << std::endl;
 
-    FileIO d;
+    /*FileIO d;
     IDCard *a = new IDCard("吴泽伟", "男", "数学与信息学院", "计算机科学与技术", "本科生", "2020年6月30日", "201625010622", "106327");
-    d.add(a);
+    d.add(a);*/
 
     Display *c = new Display();
     c->PrintMajorInterface();
@@ -27,9 +29,18 @@ int main()
     m.PrintMenu();
     m.Select();
 
-    Input i;
-    i.Draw();
-    i.InputInfo();
-    i.Select();
+    /*Input i;
+    i.Start();*/
+
+    Modify ww;
+    ww.Draw();
+    ww.InputInfo();
+    ww.Select();
+
+    Query q;
+    q.Draw();
+    q.InputInfo();
+    q.Select();
+    q.Find();
     return 0;
 }
