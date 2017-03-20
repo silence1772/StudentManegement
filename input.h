@@ -81,11 +81,120 @@ public:
 
 
     }
+    void Draw(string student_id_)
+    {
+        IDCardList *L = new IDCardList();
+        FileIO *fp = new FileIO();
+        fp->read(L);
+        delete fp;
+
+        IDCard *ptr;
+        ptr = L->head_;
+        while (ptr != NULL)
+        {
+            if (ptr->GetStudentID() == student_id_)
+            {
+                SetColor(8);
+                SetCursorPosition(44, 14);
+                std::cout << ptr->GetName();
+                SetCursorPosition(44, 16);
+                std::cout << ptr->GetSex();
+                SetCursorPosition(44, 18);
+                std::cout << ptr->GetCollege();
+                SetCursorPosition(44, 20);
+                std::cout << ptr->GetMajor();
+                SetCursorPosition(44, 22);
+                std::cout << ptr->GetIdentity();
+                SetCursorPosition(44, 24);
+                std::cout << ptr->GetStudentID();
+                SetCursorPosition(44, 26);
+                std::cout << ptr->GetCardID();
+                SetColor(7);
+                SetCursorPosition(70, 21);
+                std::cout << "请输入修改后的信息" ;
+
+                break;
+            }
+            else
+                ptr = ptr->next_;
+        }
+
+
+        int tx = x;
+        int ty = y;
+        SetColor(11);
+        SetCursorPosition(tx, ty);
+        for(int i = 0; i < w; i++)
+        {
+            std::cout << "━" ;
+        }
+        for (int i = 0; i < h; i++)
+        {
+            SetCursorPosition(tx - 1, ++ty);
+            std::cout << "┃" ;
+            SetCursorPosition(tx - 1 + w * 2, ty);
+            std::cout << "┃" ;
+        }
+        SetCursorPosition(tx, ++ty);
+        for(int i = 0; i < w; i++)
+        {
+            std::cout << "━" ;
+        }
+
+        int ix = x + 2;
+        int iy = y + 4;
+        SetCursorPosition(ix + 20, iy - 2);
+        std::cout << "请输入学生证信息" ;
+        SetCursorPosition(ix, iy++);
+        std::cout << "姓名：" ;
+        SetCursorPosition(ix + 5, iy++);
+        std::cout << "一一一一" ;
+        SetCursorPosition(ix, iy++);
+        std::cout << "性别：" ;
+        SetCursorPosition(ix + 5, iy++);
+        std::cout << "一一" ;
+        SetCursorPosition(ix, iy++);
+        std::cout << "学院：" ;
+        SetCursorPosition(ix + 5, iy++);
+        std::cout << "一一一一一一一一" ;
+        SetCursorPosition(ix, iy++);
+        std::cout << "专业：" ;
+        SetCursorPosition(ix + 5, iy++);
+        std::cout << "一一一一一一一一一" ;
+        SetCursorPosition(ix, iy++);
+        std::cout << "身份：" ;
+        SetCursorPosition(ix + 5, iy++);
+        std::cout << "一一一一" ;
+        SetCursorPosition(ix, iy++);
+        std::cout << "学号：" ;
+        SetCursorPosition(ix + 5, iy++);
+        std::cout << "一一一一一一一" ;
+        SetCursorPosition(ix, iy++);
+        std::cout << "卡号：" ;
+        SetCursorPosition(ix + 5, iy++);
+        std::cout << "一一一一" ;
+        SetCursorPosition(ix, iy++);
+        std::cout << "有效期：    年  月  日" ;
+        SetCursorPosition(ix + 6, iy++);
+        std::cout << "一一一一一一一一" ;
+
+        SetCursorPosition(x + 40, y + 16);
+        std::cout << "确认录入" ;
+        SetCursorPosition(x + 52, y + 16);
+        std::cout << "取消" ;
+
+        SetCursorPosition(x + 34, y + 5);
+        std::cout << "日期格式：20xx年xx月xx日" ;
+        SetCursorPosition(x + 34, y + 7);
+        std::cout << "输入后按回车键进入下一行" ;
+
+
+    }
     void InputInfo()
     {
         int ix = x + 8;
         int iy = y + 4;
-        freopen("test.txt","r", stdin);
+        //freopen("test.txt","r", stdin);
         SetCursorPosition(ix, iy++);
         std::cin >> name;
         iy++;
@@ -423,7 +532,55 @@ public:
         ClearScreen(tx, ty - th - 1, tw, th);
 
     }
-    void Start()
+    void Submit(string student_id_)
+    {
+        ClearScreen(x, y, w, h);
+
+        FileIO *fp = new FileIO();
+        IDCardList *L = new IDCardList();
+        fp->read(L);
+        IDCard *node = new IDCard(name, sex, college, major, identity, validity_date, student_id, card_id);
+
+        SetColor(11);
+        SetCursorPosition(32, 6);
+        std::cout << "---------------------------------------------------" ;
+        node->PrintInfo(32, 7);
+        L->Delete(student_id_);
+        fp->write(L);
+        fp->add(node);
+        delete fp;
+
+
+        int tx = x + 14;
+        int ty = y + 5;
+        int tw = 10;
+        int th = 6;
+        SetColor(11);
+        SetCursorPosition(tx, ty);
+        for(int i = 0; i < tw; i++)
+        {
+            std::cout << "━" ;
+        }
+        for (int i = 0; i < th; i++)
+        {
+            SetCursorPosition(tx - 1, ++ty);
+            std::cout << "┃" ;
+            SetCursorPosition(tx - 1 + tw * 2, ty);
+            std::cout << "┃" ;
+        }
+        SetCursorPosition(tx, ++ty);
+        for(int i = 0; i < tw; i++)
+        {
+            std::cout << "━" ;
+        }
+
+        SetCursorPosition(tx + 5, ty - 4);
+        std::cout << "录入成功！" ;
+        Sleep(3000);
+        ClearScreen(tx, ty - th - 1, tw, th);
+
+    }
+    bool Start()
     {
         ClearScreen(30, 6, 36, 26);
         bool flag = true;
@@ -439,7 +596,7 @@ public:
                 case 0:
                     Submit();
                     flag = false;
-                    break;
+                    return true;
                 case 1:
                     ClearScreen(x, y, w, h);
                     break;
@@ -455,6 +612,41 @@ public:
                 flag = false;
             }
         }
+        return false;
+    }
+    bool Start(string student_id_)
+    {
+        ClearScreen(30, 6, 36, 26);
+        bool flag = true;
+        while (flag)
+        {
+            Draw(student_id_);
+            InputInfo();
+            int option = Select();
+            if (option == 1)
+            {
+                switch(Verify())
+                {
+                case 0:
+                    Submit(student_id_);
+                    flag = false;
+                    return true;
+                case 1:
+                    ClearScreen(x, y, w, h);
+                    break;
+                case 2:
+                    ClearScreen(x, y, w, h);
+                    flag = false;
+                    break;
+                }
+            }
+            else
+            {
+                ClearScreen(x, y, w, h);
+                flag = false;
+            }
+        }
+        return false;
     }
 private:
     int x;

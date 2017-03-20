@@ -1,14 +1,11 @@
-#ifndef QUERY_H
-#define QUERY_H
+#ifndef DELETE_H
+#define DELETE_H
 
-#include "file_io.h"
-#include <windows.h>
 
-class Query
+class Delete
 {
 public:
-    Query() : x(45), y(13), w(20), h(8) { }
-    Query(string id) : x(45), y(13), w(20), h(8), id_(id) { }
+    Delete() : x(45), y(13), w(20), h(8) { }
     void Draw()
     {
         int tx = x;
@@ -32,8 +29,8 @@ public:
             std::cout << "━" ;
         }
 
-        SetCursorPosition(x + 3, y + 2);
-        std::cout << "请输入要查询的学生学号或班级编号：" ;
+        SetCursorPosition(x + 6, y + 2);
+        std::cout << "请输入要删除的学生学号：" ;
         SetCursorPosition(x + 12, y + 5);
         std::cout << "一一一一一一一" ;
 
@@ -43,11 +40,11 @@ public:
     void InputInfo()
     {
         SetCursorPosition(x + 13, y + 4);
-        std::cin >> id_ ;
+        std::cin >> student_id_ ;
 
         SetColor(11, 8);
         SetCursorPosition(x + 9, y + 7);
-        std::cout << "查询" ;
+        std::cout << "查找" ;
     }
     int Select()
     {
@@ -63,7 +60,7 @@ public:
                 {
                     SetColor(11, 8);
                     SetCursorPosition(x + 9, y + 7);
-                    std::cout << "查询" ;
+                    std::cout << "查找" ;
 
                     SetColor(11);
                     SetCursorPosition(x + 24, y + 7);
@@ -77,7 +74,7 @@ public:
                 {
                     SetColor(11, 8);
                     SetCursorPosition(x + 9, y + 7);
-                    std::cout << "查询" ;
+                    std::cout << "查找" ;
 
                     SetColor(11);
                     SetCursorPosition(x + 24, y + 7);
@@ -91,7 +88,7 @@ public:
                 {
                     SetColor(11);
                     SetCursorPosition(x + 9, y + 7);
-                    std::cout << "查询" ;
+                    std::cout << "查找" ;
 
                     SetColor(11, 8);
                     SetCursorPosition(x + 24, y + 7);
@@ -105,7 +102,7 @@ public:
                 {
                     SetColor(11);
                     SetCursorPosition(x + 9, y + 7);
-                    std::cout << "查询" ;
+                    std::cout << "查找" ;
 
                     SetColor(11, 8);
                     SetCursorPosition(x + 24, y + 7);
@@ -137,10 +134,8 @@ public:
     }
     int Verify()
     {
-        if(id_.size() == 12)
+        if(student_id_.size() == 12)
             return 1;
-        else if (id_.size() == 6)
-            return 2;
         else
         {
             ClearScreen(30, 6, 36, 26);
@@ -170,7 +165,7 @@ public:
 
             SetColor(11);
             SetCursorPosition(ix + 10, iy - 6);
-            std::cout << "学号或班级编号不存在！" ;
+            std::cout << "输入的学号不存在！" ;
 
             SetColor(5, 11);
             SetCursorPosition(ix + 8, iy - 3);
@@ -258,40 +253,64 @@ public:
             switch (tmp_key)
             {
             case 1:
-                return 3;
+                return 2;
                 break;
             case 2:
-                return 4;
+                return 3;
                 break;
             }
-            return 4;
+            return 3;
         }
         return 0;
     }
-    void FindByStuID()
+    void DeleteInfo()
     {
         IDCardList *L = new IDCardList();
         FileIO *fp = new FileIO();
         fp->read(L);
-        delete fp;
 
-        IDCard *ptr;
-        ptr = L->head_;
-        while (ptr != NULL)
+
+        if (L->Find(student_id_))
         {
-            if (ptr->GetStudentID() == id_)
+            if(Confirm())
             {
-                SetColor(11);
-                SetCursorPosition(32, 6);
-                std::cout << "---------------------------------------------------" ;
-                ptr->PrintInfo(32, 7);
-                return;
+                L->Delete(student_id_);
+                fp->write(L);
             }
-            else
-                ptr = ptr->next_;
+            ClearScreen(30, 6, 36, 26);
         }
+        else
+        {
+            ClearScreen(30, 6, 36, 26);
+            int tx = x;
+            int ty = y;
+            SetColor(11);
+            SetCursorPosition(tx, ty);
+            for(int i = 0; i < w; i++)
+            {
+                std::cout << "━" ;
+            }
+            for (int i = 0; i < h; i++)
+            {
+                SetCursorPosition(tx - 1, ++ty);
+                std::cout << "┃" ;
+                SetCursorPosition(tx - 1 + w * 2, ty);
+                std::cout << "┃" ;
+            }
+            SetCursorPosition(tx, ++ty);
+            for(int i = 0; i < w; i++)
+            {
+                std::cout << "━" ;
+            }
 
-        ClearScreen(30, 6, 36, 26);
+            SetCursorPosition(tx + 16, ty - 5);
+            std::cout << "无记录！" ;
+            Sleep(3000);
+            ClearScreen(30, 6, 36, 26);
+        }
+    }
+    bool Confirm()
+    {
         int tx = x;
         int ty = y;
         SetColor(11);
@@ -313,187 +332,13 @@ public:
             std::cout << "━" ;
         }
 
-        SetCursorPosition(tx + 16, ty - 5);
-        std::cout << "无记录！" ;
-        Sleep(3000);
+        SetCursorPosition(tx + 10, ty - 5);
+        std::cout << "确认删除" ;
+
+
+
         ClearScreen(30, 6, 36, 26);
-    }
-    void FindByClassID()
-    {
-        IDCardList *L = new IDCardList();
-        FileIO *fp = new FileIO();
-        fp->read(L);
-        delete fp;
-
-        int cnt = 0;
-        IDCard *ptr;
-        IDCardList *tL = new IDCardList();
-        ptr = L->head_;
-        while (ptr != NULL)
-        {
-            if (ptr->GetClassID() == id_)
-            {
-                IDCard *node = new IDCard(ptr->GetName(), ptr->GetSex(), ptr->GetCollege(), ptr->GetMajor(), ptr->GetIdentity(),
-                                          ptr->GetValidity_date(), ptr->GetStudentID(), ptr->GetCardID());
-                tL->Insert(node);
-                ++cnt;
-                /*
-                SetCursorPosition(32, 6);
-                std::cout << "---------------------------------------------------" ;
-                ptr->PrintInfo(32, 7);
-                return 1;*/
-            }
-            ptr = ptr->next_;
-        }
-
-        if (cnt <= 4)
-        {
-            SetColor(11);
-            SetCursorPosition(32, 6);
-            std::cout << "---------------------------------------------------" ;
-
-            int i = 0;
-            ptr = tL->head_;
-            while (ptr != NULL)
-            {
-                ptr->PrintInfo(32, 7 + i * 6);
-                ++i;
-                ptr = ptr->next_;
-            }
-
-            SetCursorPosition(60, 32);
-            std::cout << "1/1页" ;
-        }
-        else
-        {
-            SetColor(11);
-            SetCursorPosition(32, 6);
-            std::cout << "---------------------------------------------------" ;
-
-            int i = 0;
-            ptr = tL->head_;
-            while (ptr != NULL)
-            {
-                ptr->PrintInfo(32, 7 + i * 6);
-                ptr = ptr->next_;
-                if (++i >= 4)
-                    break;
-            }
-
-            SetCursorPosition(60, 32);
-            int sum = (cnt % 4 == 0 ? cnt / 4 : cnt / 4 + 1);
-            std::cout << "1/" << sum << "页" ;
-
-            int ch;
-            int tmp_key = 1;
-            bool flag = false;
-            while ((ch = getch()))
-            {
-                switch(ch)
-                {
-                case 75:
-                    if (tmp_key > 1)
-                    {
-                        ClearScreen(30, 7, 36, 25);
-                        ptr = tL->head_;
-                        i = 1;
-                        while (i < tmp_key - 1)
-                        {
-                            for (int j = 0; j < 4 && ptr != NULL; ++j)
-                                ptr = ptr->next_;
-                            ++i;
-                        }
-                        for (i = 0; i < 4 && ptr != NULL; ++i)
-                        {
-                            ptr->PrintInfo(32, 7 + i * 6);
-                            ptr = ptr->next_;
-                        }
-                        SetCursorPosition(60, 32);
-                        std::cout << tmp_key - 1 << "/" << sum << "页" ;
-                        --tmp_key;
-                    }
-
-                    break;
-                case 72:
-                    if (tmp_key > 1)
-                    {
-                        ClearScreen(30, 7, 36, 25);
-                        ptr = tL->head_;
-                        i = 1;
-                        while (i < tmp_key - 1)
-                        {
-                            for (int j = 0; j < 4 && ptr != NULL; ++j)
-                                ptr = ptr->next_;
-                            ++i;
-                        }
-                        for (i = 0; i < 4 && ptr != NULL; ++i)
-                        {
-                            ptr->PrintInfo(32, 7 + i * 6);
-                            ptr = ptr->next_;
-                        }
-                        SetCursorPosition(60, 32);
-                        std::cout << tmp_key - 1 << "/" << sum << "页" ;
-                        --tmp_key;
-                    }
-
-                    break;
-                case 77:
-                    if (tmp_key < sum)
-                    {
-                        ClearScreen(30, 7, 36, 25);
-                        ptr = tL->head_;
-                        i = 1;
-                        while (i < tmp_key + 1)
-                        {
-                            for (int j = 0; j < 4 && ptr != NULL; ++j)
-                                ptr = ptr->next_;
-                            ++i;
-                        }
-                        for (i = 0; i < 4 && ptr != NULL; ++i)
-                        {
-                            ptr->PrintInfo(32, 7 + i * 6);
-                            ptr = ptr->next_;
-                        }
-                        SetCursorPosition(60, 32);
-                        std::cout << tmp_key + 1 << "/" << sum << "页" ;
-                        ++tmp_key;
-                    }
-
-                    break;
-                case 80:
-                    if (tmp_key < sum)
-                    {
-                        ClearScreen(30, 7, 36, 25);
-                        ptr = tL->head_;
-                        i = 1;
-                        while (i < tmp_key + 1)
-                        {
-                            for (int j = 0; j < 4 && ptr != NULL; ++j)
-                                ptr = ptr->next_;
-                            ++i;
-                        }
-                        for (i = 0; i < 4 && ptr != NULL; ++i)
-                        {
-                            ptr->PrintInfo(32, 7 + i * 6);
-                            ptr = ptr->next_;
-                        }
-                        SetCursorPosition(60, 32);
-                        std::cout << tmp_key + 1 << "/" << sum << "页" ;
-                        ++tmp_key;
-                    }
-
-                    break;
-                case 13:
-                    flag = true;
-                    break;
-                default:
-                    break;
-                }
-                if (flag == true)
-                    break;
-            }
-
-        }
+        return true;
     }
     void Start()
     {
@@ -509,20 +354,14 @@ public:
                 switch(Verify())
                 {
                 case 1:
-                    ClearScreen(30, 6, 36, 26);
-                    FindByStuID();
+                    DeleteInfo();
                     flag = false;
                     break;
                 case 2:
-                    ClearScreen(30, 6, 36, 26);
-                    FindByClassID();
-                    flag = false;
+                    ClearScreen(x, y, w, h);
                     break;
                 case 3:
-                    ClearScreen(30, 6, 36, 26);
-                    break;
-                case 4:
-                    ClearScreen(30, 6, 36, 26);
+                    ClearScreen(x, y, w, h);
                     flag = false;
                     break;
                 }
@@ -539,6 +378,6 @@ private:
     int y;
     int w;
     int h;
-    string id_;
+    string student_id_;
 };
-#endif // QUERY_H
+#endif // DELETE_H

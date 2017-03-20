@@ -7,6 +7,7 @@
 #include "input.h"
 #include "modify.h"
 #include "query.h"
+#include "delete.h"
 
 int main()
 {
@@ -33,11 +34,12 @@ int main()
     i.Start();*/
 
     /*Modify ww;
-    ww.Draw();
-    ww.InputInfo();
-    ww.Select();*/
+    ww.Start();*/
 
-    Query q;
+    Delete d;
+    d.Start();
+
+    /*Query q;
     q.Start();
-    return 0;
+    return 0;*/
 }

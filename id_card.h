@@ -80,7 +80,7 @@ public:
     {
         return student_id_;
     }
-    string GetCard_id()
+    string GetCardID()
     {
         return card_id_;
     }
@@ -88,7 +88,6 @@ public:
     {
         return class_id_;
     }
-
 private:
     string name_;
     string sex_;
