@@ -44,6 +44,7 @@
 		<Unit filename="modify.h" />
 		<Unit filename="point.h" />
 		<Unit filename="query.h" />
+		<Unit filename="statistics.h" />
 		<Unit filename="tools.h" />
 		<Extensions>
 			<code_completion />

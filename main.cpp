@@ -8,6 +8,7 @@
 #include "modify.h"
 #include "query.h"
 #include "delete.h"
+#include "statistics.h"
 
 int main()
 {
@@ -36,8 +37,11 @@ int main()
     /*Modify ww;
     ww.Start();*/
 
-    Delete d;
-    d.Start();
+    /*Delete d;
+    d.Start();*/
+
+    Statistics s;
+    s.Start();
 
     /*Query q;
     q.Start();

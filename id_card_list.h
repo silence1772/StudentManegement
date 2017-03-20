@@ -12,6 +12,7 @@ public:
     friend class Query;
     friend class Modify;
     friend class Input;
+    friend class Statistics;
     void Insert(IDCard *p)
     {
         if (head_ != NULL)

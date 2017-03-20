@@ -311,6 +311,7 @@ public:
     }
     bool Confirm()
     {
+        ClearScreen(x, y, w, h);
         int tx = x;
         int ty = y;
         SetColor(11);
@@ -332,13 +333,108 @@ public:
             std::cout << "━" ;
         }
 
-        SetCursorPosition(tx + 10, ty - 5);
+        SetCursorPosition(x + 10, y + 3);
+        std::cout << "是否删除该学生信息？" ;
+
+        SetCursorPosition(x + 24, y + 7);
+        std::cout << "取消" ;
+        SetColor(11, 8);
+        SetCursorPosition(x + 9, y + 7);
         std::cout << "确认删除" ;
 
+        int ch;
+        int tmp_key = 1;
+        bool flag = false;
+        while ((ch = getch()))
+        {
+            switch(ch)
+            {
+            case 75://LEFT
+                if (tmp_key > 1)
+                {
+                    SetColor(11, 8);
+                    SetCursorPosition(x + 9, y + 7);
+                    std::cout << "确认删除" ;
+
+                    SetColor(11);
+                    SetCursorPosition(x + 24, y + 7);
+                    std::cout << "取消" ;
+
+                    --tmp_key;
+                }
+                break;
+            case 72://UP
+                if (tmp_key > 1)
+                {
+                    SetColor(11, 8);
+                    SetCursorPosition(x + 9, y + 7);
+                    std::cout << "确认删除" ;
+
+                    SetColor(11);
+                    SetCursorPosition(x + 24, y + 7);
+                    std::cout << "取消" ;
+
+                    --tmp_key;
+                }
+                break;
+            case 77://RIGHT
+                if (tmp_key < 2)
+                {
+                    SetColor(11);
+                    SetCursorPosition(x + 9, y + 7);
+                    std::cout << "确认删除" ;
+
+                    SetColor(11, 8);
+                    SetCursorPosition(x + 24, y + 7);
+                    std::cout << "取消" ;
+
+                    ++tmp_key;
+                }
+                break;
+            case 80://DOWN
+                if (tmp_key < 2)
+                {
+                    SetColor(11);
+                    SetCursorPosition(x + 9, y + 7);
+                    std::cout << "确认删除" ;
+
+                    SetColor(11, 8);
+                    SetCursorPosition(x + 24, y + 7);
+                    std::cout << "取消" ;
+
+                    ++tmp_key;
+                }
+                break;
+            case 13:
+                flag = true;
+                break;
+            default:
+                break;
+            }
+            if (flag == true)
+                break;
+        }
+
+        switch (tmp_key)
+        {
+        case 1:
+            ClearScreen(x+2, y+1, w-4, h-2);
+            SetColor(11);
+            SetCursorPosition(x + 16, y + 4);
+            std::cout << "删除成功！" ;
+            Sleep(3000);
+            ClearScreen(30, 6, 36, 26);
+            return true;
+            break;
+        case 2:
+            ClearScreen(30, 6, 36, 26);
+            return false;
+            break;
+        }
+        return false;
 
 
-        ClearScreen(30, 6, 36, 26);
-        return true;
+        return false;
     }
     void Start()
     {
