@@ -30,7 +30,7 @@ public:
     }
     int write(IDCardList *L)
     {
-        fout.open("student_data1.txt", std::ios::out);
+        fout.open("student_data.txt", std::ios::out);
         if (!fout.is_open())
         {
             std::cout << "无法打开文件！" << std::endl;
@@ -48,7 +48,7 @@ public:
     }
     int add(IDCard *node)
     {
-        fout.open("student_data1.txt", std::ios::app);
+        fout.open("student_data.txt", std::ios::app);
         if (!fout.is_open())
         {
             std::cout << "无法打开文件！" << std::endl;

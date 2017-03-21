@@ -1,6 +1,5 @@
 # depslib dependency file v1.0
-1490070337 source:e:\codeblocks\studentmanagement\main.cpp
-	<stdlib.h>
+1490105239 source:e:\codeblocks\studentmanagement\main.cpp
 	"controller.h"
 
 1489984449 e:\codeblocks\studentmanagement\id_card.h
@@ -11,25 +10,26 @@
 1490022204 e:\codeblocks\studentmanagement\id_card_list.h
 	"id_card.h"
 
-1489757868 e:\codeblocks\studentmanagement\file_io.h
+1490105239 e:\codeblocks\studentmanagement\file_io.h
 	<fstream>
 	<sstream>
 	"id_card_list.h"
 
-1489891602 e:\codeblocks\studentmanagement\tools.h
+1490109362 e:\codeblocks\studentmanagement\tools.h
 	<windows.h>
 	<stdio.h>
 
-1490070664 e:\codeblocks\studentmanagement\display.h
+1490109164 e:\codeblocks\studentmanagement\display.h
 	"point.h"
 	<vector>
+	<deque>
 	<windows.h>
 
-1489824815 e:\codeblocks\studentmanagement\point.h
+1490102178 e:\codeblocks\studentmanagement\point.h
 	"tools.h"
 	<iostream>
 
-1490070850 e:\codeblocks\studentmanagement\menu.h
+1490109164 e:\codeblocks\studentmanagement\menu.h
 	"tools.h"
 	<iostream>
 	<conio.h>
@@ -49,15 +49,15 @@
 	"file_io.h"
 	<windows.h>
 
-1490021131 e:\codeblocks\studentmanagement\delete.h
+1490104983 e:\codeblocks\studentmanagement\delete.h
 
-1490022637 e:\codeblocks\studentmanagement\statistics.h
+1490095328 e:\codeblocks\studentmanagement\statistics.h
 
-1490070627 e:\codeblocks\studentmanagement\users.h
+1490108835 e:\codeblocks\studentmanagement\users.h
 	<fstream>
 	<sstream>
 
-1490071827 e:\codeblocks\studentmanagement\controller.h
+1490105239 e:\codeblocks\studentmanagement\controller.h
 	"file_io.h"
 	"tools.h"
 	"display.h"

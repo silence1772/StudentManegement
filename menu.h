@@ -53,9 +53,9 @@ public:
     }
     int Select()
     {
+        SetCursorPosition(0, 35);
         /*上下方向键选择模块*/
         int ch;//记录键入值
-
         bool flag = false;//记录是否键入Enter键标记，初始置为否
         while ((ch = getch()))
         {
@@ -229,6 +229,7 @@ public:
                     break;
             }
             if (flag) break;//输入Enter回车键确认，退出检查输入循环
+            SetCursorPosition(0, 35);
         }
 
         switch(key_)

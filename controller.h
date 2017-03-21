@@ -12,17 +12,19 @@
 #include "statistics.h"
 #include "users.h"
 
-
 void Controller()
 {
     SetWindowSize(106, 36);//设置窗口大小
     SetColor(11);//设置开始动画颜色
 
+    Display *c = new Display();
+    c->Action();
+
     Users u;
     if (!u.Start()) return;
 
     Menu m = Menu(u.GetName(), u.GetId(), u.GetPms());
-    Display *c = new Display();
+
 
     c->PrintMajorInterface();
     delete c;
@@ -31,7 +33,7 @@ void Controller()
 
     int opt;
     bool flag = true;
-    while ((opt = m.Select()) && flag)
+    while (flag && (opt = m.Select()) )
     {
         switch(opt)
         {

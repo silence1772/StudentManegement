@@ -11,9 +11,15 @@ public:
 
     Point(const int x, const int y) : x(x), y(y) {}
 
-    void Print()//输出方块
+    void Print2()//输出方块
     {
         SetCursorPosition2(x, y);
+        std::cout << "■" ;
+    }
+
+    void Print()//输出方块
+    {
+        SetCursorPosition(x, y);
         std::cout << "■" ;
     }
 
@@ -23,9 +29,15 @@ public:
         std::cout << "∷" ;
     }
 
-    void Clear()//清除输出
+    void Clear2()//清除输出
     {
         SetCursorPosition2(x, y);
+        std::cout << "  " ;
+    }
+
+    void Clear()//清除输出
+    {
+        SetCursorPosition(x, y);
         std::cout << "  " ;
     }
 

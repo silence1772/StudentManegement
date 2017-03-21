@@ -64,7 +64,7 @@ public:
         SetCursorPosition(x + 10, y + 4);
         std::cout << "女生人数：" << girl_sum_;
 
-        int ch;
+        char ch;
         bool flag = false;
         while ((ch = getch()))
         {
@@ -77,9 +77,10 @@ public:
                 break;
             }
 
-            if(flag)
+            if(flag == true)
                 break;
         }
+        ClearScreen(30, 6, 36, 26);
     }
 private:
     int x;

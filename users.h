@@ -109,6 +109,7 @@ public:
     }
     int Select()
     {
+        SetCursorPosition(0, 35);
         int ch;
         int tmp_key = 1;
         bool flag = false;
@@ -180,6 +181,7 @@ public:
             }
             if (flag == true)
                 break;
+            SetCursorPosition(0, 35);
         }
 
         switch (tmp_key)
@@ -244,8 +246,10 @@ public:
                 {
                     ClearScreen(x + 2, y + 1, w - 4, h - 2);
                     SetCursorPosition(x + 8, y + 6);
+                    SetColor(11);
                     std::cout << "用户名不存在或密码错误！" ;
-                    Sleep(3000);
+                    SetCursorPosition(0, 35);
+                    Sleep(2000);
 
                 }
             }
