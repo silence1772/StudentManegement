@@ -1,16 +1,7 @@
 # depslib dependency file v1.0
-1490065911 source:e:\codeblocks\studentmanagement\main.cpp
-	"file_io.h"
-	"tools.h"
-	"display.h"
-	"menu.h"
+1490070337 source:e:\codeblocks\studentmanagement\main.cpp
 	<stdlib.h>
-	"input.h"
-	"modify.h"
-	"query.h"
-	"delete.h"
-	"statistics.h"
-	"users.h"
+	"controller.h"
 
 1489984449 e:\codeblocks\studentmanagement\id_card.h
 	<iostream>
@@ -29,7 +20,7 @@
 	<windows.h>
 	<stdio.h>
 
-1489883049 e:\codeblocks\studentmanagement\display.h
+1490070664 e:\codeblocks\studentmanagement\display.h
 	"point.h"
 	<vector>
 	<windows.h>
@@ -38,7 +29,7 @@
 	"tools.h"
 	<iostream>
 
-1489824744 e:\codeblocks\studentmanagement\menu.h
+1490070850 e:\codeblocks\studentmanagement\menu.h
 	"tools.h"
 	<iostream>
 	<conio.h>
@@ -54,7 +45,7 @@
 	<windows.h>
 	"input.h"
 
-1489984140 e:\codeblocks\studentmanagement\query.h
+1490071946 e:\codeblocks\studentmanagement\query.h
 	"file_io.h"
 	<windows.h>
 
@@ -62,7 +53,19 @@
 
 1490022637 e:\codeblocks\studentmanagement\statistics.h
 
-1490066228 e:\codeblocks\studentmanagement\users.h
+1490070627 e:\codeblocks\studentmanagement\users.h
 	<fstream>
 	<sstream>
+
+1490071827 e:\codeblocks\studentmanagement\controller.h
+	"file_io.h"
+	"tools.h"
+	"display.h"
+	"menu.h"
+	"input.h"
+	"modify.h"
+	"query.h"
+	"delete.h"
+	"statistics.h"
+	"users.h"
 

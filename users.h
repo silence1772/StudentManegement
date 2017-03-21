@@ -8,6 +8,18 @@ class Users
 {
 public:
     Users() : x(32), y(11), w(20), h(11), permission_(0) { }
+    int GetPms()
+    {
+        return permission_;
+    }
+    string GetName()
+    {
+        return name_;
+    }
+    string GetId()
+    {
+        return id_;
+    }
     void Draw()
     {
         ClearScreen(x, y, w, h);
@@ -86,7 +98,7 @@ public:
     void InputInfo()
     {
         SetCursorPosition(x + 14, y + 5);
-        std::cin >> name_ ;
+        std::cin >> id_ ;
 
         SetCursorPosition(x + 14, y + 7);
         inputPassword();
@@ -196,13 +208,14 @@ public:
         while (std::getline(fin, line))
         {
             std::istringstream record(line);
-            string tmp_name, tmp_psw;
+            string tmp_name, tmp_id, tmp_psw;
             int tmp_per;
-            record >> tmp_name >> tmp_psw >> tmp_per ;
+            record >> tmp_name >> tmp_id >> tmp_psw >> tmp_per ;
 
-            if (tmp_name == name_ && tmp_psw == password_)
+            if (tmp_id == id_ && tmp_psw == password_)
             {
                 permission_ = tmp_per;
+                name_ = tmp_name;
                 fin.close();
                 return true;
             }
@@ -224,6 +237,7 @@ public:
             {
                 if (Verify())
                 {
+                    ClearScreen(30, 6, 36, 26);
                     return true;
                 }
                 else
@@ -242,6 +256,7 @@ public:
         }
         return false;
     }
+
 private:
     int x;
     int y;
@@ -249,7 +264,9 @@ private:
     int h;
     int permission_;
     string name_;
+    string id_;
     string password_;
+
 
 };
 #endif // USERS_H

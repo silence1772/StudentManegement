@@ -483,7 +483,8 @@ public:
                     }
 
                     break;
-                case 13:
+                case 27:
+                    ClearScreen(30, 6, 36, 26);
                     flag = true;
                     break;
                 default:

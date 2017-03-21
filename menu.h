@@ -8,26 +8,27 @@
 class Menu
 {
 public:
-    Menu() : position_x_(6), position_y_(9), key_(3) { }
+    Menu(string name, string id, int pms) : position_x_(6), position_y_(9), key_(3),
+     name_(name), id_(id), permission_(pms) { }
     void PrintUserInfo()
     {
 
         SetColor(5);
         SetCursorPosition(5, 7);
-        std::cout << "欢迎您：吴泽伟" << std::endl;
+        std::cout << "欢迎您：" << name_ << std::endl;
         SetCursorPosition(5, 9);
-        std::cout << "账号：201625010622" << std::endl;
+        std::cout << "账号：" << id_ << std::endl;
         SetCursorPosition(5, 11);
-        std::cout << "权限：管理员" << std::endl;
+        std::cout << "权限：" << (permission_==1?"管理员":"游客") << std::endl;
 
         SetColor(6);
-        SetCursorPosition(6, 13);
+        SetCursorPosition(10, 13);
         std::cout << "修改密码" << std::endl;
-        SetCursorPosition(6, 14);
+        SetCursorPosition(10, 14);
         std::cout << "一一一一" << std::endl;
-        SetCursorPosition(6, 15);
+        SetCursorPosition(10, 15);
         std::cout << "退出系统" << std::endl;
-        SetCursorPosition(6, 16);
+        SetCursorPosition(10, 16);
         std::cout << "一一一一" << std::endl;
 
         SetCursorPosition(4, 17);
@@ -67,24 +68,24 @@ public:
                         {
                         case 2:
                             SetColor(1, 5);
-                            SetCursorPosition(6, 13);
+                            SetCursorPosition(10, 13);
                             std::cout << "修改密码" ;
-                            SetCursorPosition(6, 14);
+                            SetCursorPosition(10, 14);
                             std::cout << "一一一一" ;
 
                             SetColor(6);
-                            SetCursorPosition(6, 15);
+                            SetCursorPosition(10, 15);
                             std::cout << "退出系统" ;
-                            SetCursorPosition(6, 16);
+                            SetCursorPosition(10, 16);
                             std::cout << "一一一一" ;
 
                             --key_;
                             break;
                         case 3:
                             SetColor(1, 5);
-                            SetCursorPosition(6, 15);
+                            SetCursorPosition(10, 15);
                             std::cout << "退出系统" ;
-                            SetCursorPosition(6, 16);
+                            SetCursorPosition(10, 16);
                             std::cout << "一一一一" ;
 
                             SetColor(8);
@@ -148,24 +149,24 @@ public:
                         {
                         case 1:
                             SetColor(6);
-                            SetCursorPosition(6, 13);
+                            SetCursorPosition(10, 13);
                             std::cout << "修改密码" ;
-                            SetCursorPosition(6, 14);
+                            SetCursorPosition(10, 14);
                             std::cout << "一一一一" ;
 
                             SetColor(1, 5);
-                            SetCursorPosition(6, 15);
+                            SetCursorPosition(10, 15);
                             std::cout << "退出系统" ;
-                            SetCursorPosition(6, 16);
+                            SetCursorPosition(10, 16);
                             std::cout << "一一一一" ;
 
                             ++key_;
                             break;
                         case 2:
                             SetColor(6);
-                            SetCursorPosition(6, 15);
+                            SetCursorPosition(10, 15);
                             std::cout << "退出系统" ;
-                            SetCursorPosition(6, 16);
+                            SetCursorPosition(10, 16);
                             std::cout << "一一一一" ;
 
                             SetColor(8, 11);
@@ -260,5 +261,9 @@ private:
     int position_x_;
     int position_y_;
     int key_;
+
+    string name_;
+    string id_;
+    int permission_;
 };
 #endif // MENU_H

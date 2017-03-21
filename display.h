@@ -11,6 +11,7 @@ public:
     Display() : pause_time_(0) { }
     void PrintMajorInterface()
     {
+        SetColor(11);
         int x = 0;
         int y = 5;
         int w = 12;
