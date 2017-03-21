@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1490022184 source:e:\codeblocks\studentmanagement\main.cpp
+1490065911 source:e:\codeblocks\studentmanagement\main.cpp
 	"file_io.h"
 	"tools.h"
 	"display.h"
@@ -10,6 +10,7 @@
 	"query.h"
 	"delete.h"
 	"statistics.h"
+	"users.h"
 
 1489984449 e:\codeblocks\studentmanagement\id_card.h
 	<iostream>
@@ -60,4 +61,8 @@
 1490021131 e:\codeblocks\studentmanagement\delete.h
 
 1490022637 e:\codeblocks\studentmanagement\statistics.h
+
+1490066228 e:\codeblocks\studentmanagement\users.h
+	<fstream>
+	<sstream>
 

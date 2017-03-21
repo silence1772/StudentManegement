@@ -46,6 +46,7 @@
 		<Unit filename="query.h" />
 		<Unit filename="statistics.h" />
 		<Unit filename="tools.h" />
+		<Unit filename="users.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />

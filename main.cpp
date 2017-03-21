@@ -9,6 +9,7 @@
 #include "query.h"
 #include "delete.h"
 #include "statistics.h"
+#include "users.h"
 
 int main()
 {
@@ -22,6 +23,12 @@ int main()
     /*FileIO d;
     IDCard *a = new IDCard("吴泽伟", "男", "数学与信息学院", "计算机科学与技术", "本科生", "2020年6月30日", "201625010622", "106327");
     d.add(a);*/
+
+
+
+    Users u;
+    u.Start();
+
 
     Display *c = new Display();
     c->PrintMajorInterface();
@@ -40,8 +47,9 @@ int main()
     /*Delete d;
     d.Start();*/
 
-    Statistics s;
-    s.Start();
+    /*Statistics s;
+    s.Start();*/
+
 
     /*Query q;
     q.Start();
