@@ -38,6 +38,7 @@ void Controller()
         switch(opt)
         {
         case 1:
+            u.SetPsw();
             break;
         case 2:
             flag = false;

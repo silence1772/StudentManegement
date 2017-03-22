@@ -227,6 +227,7 @@ public:
         SetColor(11, 8);
         SetCursorPosition(x + 40, y + 16);
         std::cout << "确认录入" ;
+        SetCursorPosition(0, 35);
     }
     int Verify()
     {
@@ -315,7 +316,7 @@ public:
         SetColor(11);
         SetCursorPosition(ix + 28, iy - 3);
         std::cout << "取消" ;
-
+        SetCursorPosition(0, 35);
 
 
 
@@ -390,6 +391,7 @@ public:
             }
             if (flag == true)
                 break;
+            SetCursorPosition(0, 35);
         }
 
         switch (tmp_key)
@@ -476,6 +478,7 @@ public:
             }
             if (flag == true)
                 break;
+            SetCursorPosition(0, 35);
         }
 
         switch (tmp_key)
@@ -528,6 +531,7 @@ public:
 
         SetCursorPosition(tx + 5, ty - 4);
         std::cout << "录入成功！" ;
+        SetCursorPosition(0, 35);
         Sleep(3000);
         ClearScreen(tx, ty - th - 1, tw, th);
 

@@ -260,7 +260,59 @@ public:
         }
         return false;
     }
+    void SetPsw()
+    {
+        int x = 45;
+        int y = 13;
+        int tx = x;
+        int ty = y;
+        int w = 20;
+        int h = 8;
+        SetColor(11);
+        SetCursorPosition(tx, ty);
+        for(int i = 0; i < w; i++)
+        {
+            std::cout << "━" ;
+        }
+        for (int i = 0; i < h; i++)
+        {
+            SetCursorPosition(tx - 1, ++ty);
+            std::cout << "┃" ;
+            SetCursorPosition(tx - 1 + w * 2, ty);
+            std::cout << "┃" ;
+        }
+        SetCursorPosition(tx, ++ty);
+        for(int i = 0; i < w; i++)
+        {
+            std::cout << "━" ;
+        }
 
+        SetColor(11);
+        SetCursorPosition(x + 10, y + 4);
+        std::cout << "请联系管理员修改密码！" ;
+        SetColor(11, 8);
+        SetCursorPosition(x + 19, y + 7);
+        std::cout << "返回" ;
+        SetCursorPosition(0, 35);
+
+        char ch;
+        bool flag = false;
+        while ((ch = getch()))
+        {
+            switch(ch)
+            {
+            case 13:
+                flag = true;
+                break;
+            default:
+                break;
+            }
+
+            if(flag == true)
+                break;
+        }
+        ClearScreen(30, 6, 36, 26);
+    }
 private:
     int x;
     int y;

@@ -49,6 +49,7 @@ public:
         SetColor(11, 8);
         SetCursorPosition(x + 9, y + 7);
         std::cout << "²éÕÒ" ;
+        SetCursorPosition(0, 35);
     }
     int Select()
     {
@@ -123,6 +124,7 @@ public:
             }
             if (flag == true)
                 break;
+            SetCursorPosition(0, 35);
         }
 
         switch (tmp_key)
