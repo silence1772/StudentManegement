@@ -11,9 +11,11 @@
 #include "delete.h"
 #include "statistics.h"
 #include "users.h"
+#include <stdlib.h>
 
 void Controller()
 {
+    //system("color f4");
     SetWindowSize(106, 36);//设置窗口大小
     SetColor(11);//设置开始动画颜色
 

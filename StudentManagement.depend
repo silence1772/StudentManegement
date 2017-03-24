@@ -15,7 +15,7 @@
 	<sstream>
 	"id_card_list.h"
 
-1490109362 e:\codeblocks\studentmanagement\tools.h
+1490270046 e:\codeblocks\studentmanagement\tools.h
 	<windows.h>
 	<stdio.h>
 
@@ -25,39 +25,39 @@
 	<deque>
 	<windows.h>
 
-1490102178 e:\codeblocks\studentmanagement\point.h
+1490270370 e:\codeblocks\studentmanagement\point.h
 	"tools.h"
 	<iostream>
 
-1490109164 e:\codeblocks\studentmanagement\menu.h
+1490270386 e:\codeblocks\studentmanagement\menu.h
 	"tools.h"
 	<iostream>
 	<conio.h>
 
-1490195649 e:\codeblocks\studentmanagement\input.h
+1490365499 e:\codeblocks\studentmanagement\input.h
 	"file_io.h"
 	"tools.h"
 	<windows.h>
 
-1490195302 e:\codeblocks\studentmanagement\modify.h
+1490366169 e:\codeblocks\studentmanagement\modify.h
 	"file_io.h"
 	"tools.h"
 	<windows.h>
 	"input.h"
 
-1490071946 e:\codeblocks\studentmanagement\query.h
+1490266283 e:\codeblocks\studentmanagement\query.h
 	"file_io.h"
 	<windows.h>
 
-1490195302 e:\codeblocks\studentmanagement\delete.h
+1490266283 e:\codeblocks\studentmanagement\delete.h
 
-1490095328 e:\codeblocks\studentmanagement\statistics.h
+1490266283 e:\codeblocks\studentmanagement\statistics.h
 
-1490195176 e:\codeblocks\studentmanagement\users.h
+1490366264 e:\codeblocks\studentmanagement\users.h
 	<fstream>
 	<sstream>
 
-1490194932 e:\codeblocks\studentmanagement\controller.h
+1490270046 e:\codeblocks\studentmanagement\controller.h
 	"file_io.h"
 	"tools.h"
 	"display.h"
@@ -68,4 +68,5 @@
 	"delete.h"
 	"statistics.h"
 	"users.h"
+	<stdlib.h>
 

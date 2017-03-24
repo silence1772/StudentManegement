@@ -532,7 +532,7 @@ public:
         SetCursorPosition(tx + 5, ty - 4);
         std::cout << "录入成功！" ;
         SetCursorPosition(0, 35);
-        Sleep(3000);
+        Sleep(1000);
         ClearScreen(tx, ty - th - 1, tw, th);
 
     }
@@ -580,7 +580,8 @@ public:
 
         SetCursorPosition(tx + 5, ty - 4);
         std::cout << "录入成功！" ;
-        Sleep(3000);
+        SetCursorPosition(0, 35);
+        Sleep(1000);
         ClearScreen(tx, ty - th - 1, tw, th);
 
     }
@@ -641,6 +642,8 @@ public:
                 case 2:
                     ClearScreen(x, y, w, h);
                     flag = false;
+                    break;
+                default:
                     break;
                 }
             }

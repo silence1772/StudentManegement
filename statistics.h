@@ -31,6 +31,7 @@ public:
         SetColor(11, 8);
         SetCursorPosition(x + 19, y + 7);
         std::cout << "返回" ;
+        SetCursorPosition(0, 35);
     }
     void Done()
     {
@@ -63,6 +64,7 @@ public:
         std::cout << "男生人数：" << boy_sum_ ;
         SetCursorPosition(x + 10, y + 4);
         std::cout << "女生人数：" << girl_sum_;
+        SetCursorPosition(0, 35);
 
         char ch;
         bool flag = false;

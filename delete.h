@@ -174,7 +174,7 @@ public:
             SetColor(11);
             SetCursorPosition(ix + 28, iy - 3);
             std::cout << "取消" ;
-
+            SetCursorPosition(0, 35);
 
 
 
@@ -249,6 +249,7 @@ public:
                 }
                 if (flag == true)
                     break;
+                SetCursorPosition(0, 35);
             }
 
             switch (tmp_key)
@@ -306,7 +307,8 @@ public:
 
             SetCursorPosition(tx + 16, ty - 5);
             std::cout << "无记录！" ;
-            Sleep(3000);
+            SetCursorPosition(0, 35);
+            Sleep(1000);
             ClearScreen(30, 6, 36, 26);
         }
     }
@@ -342,6 +344,7 @@ public:
         SetColor(11, 8);
         SetCursorPosition(x + 9, y + 7);
         std::cout << "确认删除" ;
+        SetCursorPosition(0, 35);
 
         int ch;
         int tmp_key = 1;
@@ -414,6 +417,7 @@ public:
             }
             if (flag == true)
                 break;
+            SetCursorPosition(0, 35);
         }
 
         switch (tmp_key)

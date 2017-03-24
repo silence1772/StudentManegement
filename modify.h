@@ -179,7 +179,7 @@ public:
             SetColor(11);
             SetCursorPosition(ix + 28, iy - 3);
             std::cout << "取消" ;
-
+            SetCursorPosition(0, 35);
 
 
 
@@ -254,6 +254,7 @@ public:
                 }
                 if (flag == true)
                     break;
+                SetCursorPosition(0, 35);
             }
 
             switch (tmp_key)
@@ -279,10 +280,7 @@ public:
         if (L->Find(student_id_))
         {
             Input i;
-            if (i.Start(student_id_))
-            {
-                i.Submit();
-            }
+            i.Start(student_id_);
         }
         else
         {
@@ -310,7 +308,8 @@ public:
 
             SetCursorPosition(tx + 16, ty - 5);
             std::cout << "无记录！" ;
-            Sleep(3000);
+            SetCursorPosition(0, 35);
+            Sleep(1000);
             ClearScreen(30, 6, 36, 26);
         }
     }

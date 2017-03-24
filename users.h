@@ -249,7 +249,7 @@ public:
                     SetColor(11);
                     std::cout << "用户名不存在或密码错误！" ;
                     SetCursorPosition(0, 35);
-                    Sleep(2000);
+                    Sleep(1000);
 
                 }
             }

@@ -48,6 +48,7 @@ public:
         SetColor(11, 8);
         SetCursorPosition(x + 9, y + 7);
         std::cout << "查询" ;
+        SetCursorPosition(0, 35);
     }
     int Select()
     {
@@ -122,6 +123,7 @@ public:
             }
             if (flag == true)
                 break;
+            SetCursorPosition(0, 35);
         }
 
         switch (tmp_key)
@@ -178,7 +180,7 @@ public:
             SetColor(11);
             SetCursorPosition(ix + 28, iy - 3);
             std::cout << "取消" ;
-
+            SetCursorPosition(0, 35);
 
 
 
@@ -253,6 +255,7 @@ public:
                 }
                 if (flag == true)
                     break;
+                SetCursorPosition(0, 35);
             }
 
             switch (tmp_key)
@@ -315,6 +318,7 @@ public:
 
         SetCursorPosition(tx + 16, ty - 5);
         std::cout << "无记录！" ;
+        SetCursorPosition(0, 35);
         Sleep(3000);
         ClearScreen(30, 6, 36, 26);
     }
@@ -337,11 +341,6 @@ public:
                                           ptr->GetValidity_date(), ptr->GetStudentID(), ptr->GetCardID());
                 tL->Insert(node);
                 ++cnt;
-                /*
-                SetCursorPosition(32, 6);
-                std::cout << "---------------------------------------------------" ;
-                ptr->PrintInfo(32, 7);
-                return 1;*/
             }
             ptr = ptr->next_;
         }
@@ -363,6 +362,7 @@ public:
 
             SetCursorPosition(60, 32);
             std::cout << "1/1页" ;
+            SetCursorPosition(0, 35);
         }
         else
         {
@@ -383,6 +383,7 @@ public:
             SetCursorPosition(60, 32);
             int sum = (cnt % 4 == 0 ? cnt / 4 : cnt / 4 + 1);
             std::cout << "1/" << sum << "页" ;
+            SetCursorPosition(0, 35);
 
             int ch;
             int tmp_key = 1;
@@ -492,6 +493,7 @@ public:
                 }
                 if (flag == true)
                     break;
+                SetCursorPosition(0, 35);
             }
 
         }

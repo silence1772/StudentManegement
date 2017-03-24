@@ -13,7 +13,7 @@ public:
     void PrintUserInfo()
     {
 
-        SetColor(5);
+        SetColor(11);
         SetCursorPosition(5, 7);
         std::cout << "欢迎您：" << name_ << std::endl;
         SetCursorPosition(5, 9);
@@ -21,18 +21,21 @@ public:
         SetCursorPosition(5, 11);
         std::cout << "权限：" << (permission_==1?"管理员":"游客") << std::endl;
 
-        SetColor(6);
+        SetColor(15);
         SetCursorPosition(10, 13);
         std::cout << "修改密码" << std::endl;
         SetCursorPosition(10, 14);
         std::cout << "一一一一" << std::endl;
         SetCursorPosition(10, 15);
+        SetColor(12);
         std::cout << "退出系统" << std::endl;
         SetCursorPosition(10, 16);
         std::cout << "一一一一" << std::endl;
 
+        SetColor(11);
         SetCursorPosition(4, 17);
-        std::cout << "--------------------" << std::endl;
+        //std::cout << "--------------------" << std::endl;
+        std::cout << "■■■■■■■■■■" << std::endl;
     }
     void PrintMenu()
     {
@@ -41,7 +44,7 @@ public:
         SetColor(8, 11);
         SetCursorPosition(x, (++y) * 2);
         std::cout << "⊙录入信息" << std::endl;
-        SetColor(8);
+        SetColor(15);
         SetCursorPosition(x, (++y) * 2);
         std::cout << "⊙修改信息" << std::endl;
         SetCursorPosition(x, (++y) * 2);
@@ -67,13 +70,13 @@ public:
                         switch (key_)
                         {
                         case 2:
-                            SetColor(1, 5);
+                            SetColor(0, 11);
                             SetCursorPosition(10, 13);
                             std::cout << "修改密码" ;
                             SetCursorPosition(10, 14);
                             std::cout << "一一一一" ;
 
-                            SetColor(6);
+                            SetColor(12);
                             SetCursorPosition(10, 15);
                             std::cout << "退出系统" ;
                             SetCursorPosition(10, 16);
@@ -82,57 +85,57 @@ public:
                             --key_;
                             break;
                         case 3:
-                            SetColor(1, 5);
+                            SetColor(0, 12);
                             SetCursorPosition(10, 15);
                             std::cout << "退出系统" ;
                             SetCursorPosition(10, 16);
                             std::cout << "一一一一" ;
 
-                            SetColor(8);
+                            SetColor(15);
                             SetCursorPosition(position_x_, (position_y_ + 1) * 2);
                             std::cout << "⊙录入信息" ;
 
                             --key_;
                             break;
                         case 4:
-                            SetColor(8, 11);
+                            SetColor(0, 11);
                             SetCursorPosition(position_x_, (position_y_ + 1) * 2);
                             std::cout << "⊙录入信息" ;
 
-                            SetColor(8);
+                            SetColor(15);
                             SetCursorPosition(position_x_, (position_y_ + 2) * 2);
                             std::cout << "⊙修改信息" ;
 
                             --key_;
                             break;
                         case 5:
-                            SetColor(8, 11);
+                            SetColor(0, 11);
                             SetCursorPosition(position_x_, (position_y_ + 2) * 2);
                             std::cout << "⊙修改信息" ;
 
-                            SetColor(8);
+                            SetColor(15);
                             SetCursorPosition(position_x_, (position_y_ + 3) * 2);
                             std::cout << "⊙删除信息" ;
 
                             --key_;
                             break;
                         case 6:
-                            SetColor(8, 11);
+                            SetColor(0, 11);
                             SetCursorPosition(position_x_, (position_y_ + 3) * 2);
                             std::cout << "⊙删除信息" ;
 
-                            SetColor(8);
+                            SetColor(15);
                             SetCursorPosition(position_x_, (position_y_ + 4) * 2);
                             std::cout << "⊙查询信息" ;
 
                             --key_;
                             break;
                         case 7:
-                            SetColor(8, 11);
+                            SetColor(0, 11);
                             SetCursorPosition(position_x_, (position_y_ + 4) * 2);
                             std::cout << "⊙查询信息" ;
 
-                            SetColor(8);
+                            SetColor(15);
                             SetCursorPosition(position_x_, (position_y_ + 5) * 2);
                             std::cout << "⊙统计信息" ;
 
@@ -148,13 +151,13 @@ public:
                         switch (key_)
                         {
                         case 1:
-                            SetColor(6);
+                            SetColor(15);
                             SetCursorPosition(10, 13);
                             std::cout << "修改密码" ;
                             SetCursorPosition(10, 14);
                             std::cout << "一一一一" ;
 
-                            SetColor(1, 5);
+                            SetColor(0, 12);
                             SetCursorPosition(10, 15);
                             std::cout << "退出系统" ;
                             SetCursorPosition(10, 16);
@@ -163,57 +166,57 @@ public:
                             ++key_;
                             break;
                         case 2:
-                            SetColor(6);
+                            SetColor(12);
                             SetCursorPosition(10, 15);
                             std::cout << "退出系统" ;
                             SetCursorPosition(10, 16);
                             std::cout << "一一一一" ;
 
-                            SetColor(8, 11);
+                            SetColor(0, 11);
                             SetCursorPosition(position_x_, (position_y_ + 1) * 2);
                             std::cout << "⊙录入信息" ;
 
                             ++key_;
                             break;
                         case 3:
-                            SetColor(8);
+                            SetColor(15);
                             SetCursorPosition(position_x_, (position_y_ + 1) * 2);
                             std::cout << "⊙录入信息" ;
 
-                            SetColor(8, 11);
+                            SetColor(0, 11);
                             SetCursorPosition(position_x_, (position_y_ + 2) * 2);
                             std::cout << "⊙修改信息" ;
 
                             ++key_;
                             break;
                         case 4:
-                            SetColor(8);
+                            SetColor(15);
                             SetCursorPosition(position_x_, (position_y_ + 2) * 2);
                             std::cout << "⊙修改信息" ;
 
-                            SetColor(8, 11);
+                            SetColor(0, 11);
                             SetCursorPosition(position_x_, (position_y_ + 3) * 2);
                             std::cout << "⊙删除信息" ;
 
                             ++key_;
                             break;
                         case 5:
-                            SetColor(8);
+                            SetColor(15);
                             SetCursorPosition(position_x_, (position_y_ + 3) * 2);
                             std::cout << "⊙删除信息" ;
 
-                            SetColor(8, 11);
+                            SetColor(0, 11);
                             SetCursorPosition(position_x_, (position_y_ + 4) * 2);
                             std::cout << "⊙查询信息" ;
 
                             ++key_;
                             break;
                         case 6:
-                            SetColor(8);
+                            SetColor(15);
                             SetCursorPosition(position_x_, (position_y_ + 4) * 2);
                             std::cout << "⊙查询信息" ;
 
-                            SetColor(8, 11);
+                            SetColor(0, 11);
                             SetCursorPosition(position_x_, (position_y_ + 5) * 2);
                             std::cout << "⊙统计信息" ;
 
