@@ -260,14 +260,146 @@ public:
         }
         return false;
     }
-    void SetPsw()
+    void ResetPsw(string& password)
     {
+        string psw;
+        int length = 0;
+
+        char temp_c;
+        while(true)
+        {
+            temp_c = getch();  //输入一个字符
+            if(temp_c != char(13))  //判断该字符是不为回车，如果是则退出while
+            {
+                switch  (temp_c)
+                {
+                case 8:
+                    if(length != 0)
+                    {
+                        std::cout << "\b \b";
+                        psw = psw.substr(0,length-1);
+                        length--;
+                    }
+                    else ;
+                    break;
+                default:
+                    std::cout<<"*"; //可用用你喜欢的任意字符，如改为cout<<"";则无回显
+                    psw += temp_c;//连成字符串；
+                    length++;
+                    break;
+                }
+            }
+            else break;
+        }
+        password = psw;
+    }
+    void ModifyPsw(string psw)
+    {
+        typedef struct node
+        {
+            char name[38];
+            char id[38];
+            char password[38];
+            int permission;
+            struct node *next;
+        }Node;
+
+        Node *head, *p, *tail;
+        head = (Node*)malloc(sizeof(Node));
+        head->next = NULL;
+        tail = head;
+
+        FILE *fp;
+        if ((fp = fopen("user_data.txt", "r")) == NULL )
+        {
+            std::cout << "无法加载数据！" << std::endl;
+            return ;
+        }
+        while (!feof(fp))
+        {
+            p = (Node*)malloc(sizeof(Node));
+            fscanf(fp, "%s%s%s%d", p->name, p->id, p->password, &p->permission);
+
+            if (!feof(fp))
+            {
+                p->next = NULL;
+                tail->next = p;
+                tail = p;
+            }
+
+        }
+        fclose(fp);
+
+        p = head->next;
+        while (p != NULL)
+        {
+            if (p->id == id_)
+            {
+                const char *tmp = psw.c_str();
+                strcpy(p->password, tmp);
+                break;
+            }
+            p = p->next;
+        }
+
+        //FILE *fp;
+        if ((fp = fopen("user_data.txt", "w")) == NULL )
+        {
+            std::cout << "无法加载数据！" << std::endl;
+            return ;
+        }
+
+        p = head->next;
+        while (p != NULL)
+        {
+            fprintf(fp, "%s\t%s\t%s\t%d\n", p->name, p->id, p->password, p->permission);
+            p = p->next;
+        }
+        fclose(fp);
+
         int x = 45;
-        int y = 13;
+        int y = 11;
         int tx = x;
         int ty = y;
         int w = 20;
-        int h = 8;
+        int h = 10;
+        SetColor(11);
+        SetCursorPosition(tx, ty);
+        for(int i = 0; i < w; i++)
+        {
+            std::cout << "━" ;
+        }
+        for (int i = 0; i < h; i++)
+        {
+            SetCursorPosition(tx - 1, ++ty);
+            std::cout << "┃" ;
+            SetCursorPosition(tx - 1 + w * 2, ty);
+            std::cout << "┃" ;
+        }
+        SetCursorPosition(tx, ++ty);
+        for(int i = 0; i < w; i++)
+        {
+            std::cout << "━" ;
+        }
+
+        ClearScreen(46, 12, 16, 8);
+        SetColor(11);
+        SetCursorPosition(x + 16, y + 6);
+        std::cout << "修改成功！" ;
+
+        SetCursorPosition(0, 35);
+        Sleep(1000);
+    }
+    void SetPsw()
+    {
+        string old_psw,new_psw1,new_psw2;
+
+        int x = 45;
+        int y = 11;
+        int tx = x;
+        int ty = y;
+        int w = 20;
+        int h = 10;
         SetColor(11);
         SetCursorPosition(tx, ty);
         for(int i = 0; i < w; i++)
@@ -288,30 +420,159 @@ public:
         }
 
         SetColor(11);
-        SetCursorPosition(x + 10, y + 4);
-        std::cout << "请联系管理员修改密码！" ;
-        SetColor(11, 8);
-        SetCursorPosition(x + 19, y + 7);
-        std::cout << "返回" ;
+        SetCursorPosition(x + 1, y + 2);
+        std::cout << "请输入旧密码：" ;
+        SetCursorPosition(x + 1, y + 4);
+        std::cout << "请输入新密码：" ;
+        SetCursorPosition(x + 1, y + 6);
+        std::cout << "请输入新密码：" ;
+        SetCursorPosition(x + 8, y + 9);
+        std::cout << "确认修改" ;
+        SetCursorPosition(x + 27, y + 9);
+        std::cout << "取消" ;
         SetCursorPosition(0, 35);
 
-        char ch;
+        SetCursorPosition(x + 15, y + 2);
+        ResetPsw(old_psw);
+        SetCursorPosition(x + 15, y + 4);
+        ResetPsw(new_psw1);
+        SetCursorPosition(x + 15, y + 6);
+        ResetPsw(new_psw2);
+        SetColor(11, 8);
+        SetCursorPosition(x + 8, y + 9);
+        std::cout << "确认修改" ;
+        SetCursorPosition(0, 35);
+
+        int ch;
+        int tmp_key = 1;
         bool flag = false;
         while ((ch = getch()))
         {
             switch(ch)
             {
+            case 75://LEFT
+                if (tmp_key > 1)
+                {
+                    SetColor(11, 8);
+                    SetCursorPosition(x + 8, y + 9);
+                    std::cout << "确认修改" ;
+
+                    SetColor(11);
+                    SetCursorPosition(x + 27, y + 9);
+                    std::cout << "取消" ;
+
+                    --tmp_key;
+                }
+                break;
+            case 72://UP
+                if (tmp_key > 1)
+                {
+                    SetColor(11, 8);
+                    SetCursorPosition(x + 8, y + 9);
+                    std::cout << "确认修改" ;
+
+                    SetColor(11);
+                    SetCursorPosition(x + 27, y + 9);
+                    std::cout << "取消" ;
+
+                    --tmp_key;
+                }
+                break;
+            case 77://RIGHT
+                if (tmp_key < 2)
+                {
+                    SetColor(11);
+                    SetCursorPosition(x + 8, y + 9);
+                    std::cout << "确认修改" ;
+
+                    SetColor(11, 8);
+                    SetCursorPosition(x + 27, y + 9);
+                    std::cout << "取消" ;
+
+                    ++tmp_key;
+                }
+                break;
+            case 80://DOWN
+                if (tmp_key < 2)
+                {
+                    SetColor(11);
+                    SetCursorPosition(x + 8, y + 9);
+                    std::cout << "确认修改" ;
+
+                    SetColor(11, 8);
+                    SetCursorPosition(x + 27, y + 9);
+                    std::cout << "取消" ;
+
+                    ++tmp_key;
+                }
+                break;
             case 13:
                 flag = true;
                 break;
             default:
                 break;
             }
-
-            if(flag == true)
+            if (flag == true)
                 break;
+            SetCursorPosition(0, 35);
+        }
+
+        switch (tmp_key)
+        {
+        case 1:
+            //return 1;
+            if (Verify2(old_psw, new_psw1, new_psw2))
+                ModifyPsw(new_psw1);
+            break;
+        case 2:
+            break;
         }
         ClearScreen(30, 6, 36, 26);
+    }
+    bool Verify2(string old_psw, string new_psw1, string new_psw2)
+    {
+        if (old_psw == password_ && new_psw1 == new_psw2)
+        {
+            return true;
+        }
+        else
+        {
+            ClearScreen(30, 6, 36, 26);
+            int x = 45;
+            int y = 11;
+            int tx = x;
+            int ty = y;
+            int w = 20;
+            int h = 10;
+            SetColor(11);
+            SetCursorPosition(tx, ty);
+            for(int i = 0; i < w; i++)
+            {
+                std::cout << "━" ;
+            }
+            for (int i = 0; i < h; i++)
+            {
+                SetCursorPosition(tx - 1, ++ty);
+                std::cout << "┃" ;
+                SetCursorPosition(tx - 1 + w * 2, ty);
+                std::cout << "┃" ;
+            }
+            SetCursorPosition(tx, ++ty);
+            for(int i = 0; i < w; i++)
+            {
+                std::cout << "━" ;
+            }
+
+            SetColor(11);
+            SetCursorPosition(x + 13, y + 5);
+            if (old_psw != password_)
+                std::cout << "原始密码错误！" ;
+            else
+                std::cout << "两次输入不一致！" ;
+            SetCursorPosition(0, 35);
+        }
+        Sleep(1000);
+        return false;
     }
 private:
     int x;

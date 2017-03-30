@@ -10,9 +10,10 @@
 1490022204 e:\codeblocks\studentmanagement\id_card_list.h
 	"id_card.h"
 
-1490105239 e:\codeblocks\studentmanagement\file_io.h
+1490803449 e:\codeblocks\studentmanagement\file_io.h
 	<fstream>
 	<sstream>
+	<stdio.h>
 	"id_card_list.h"
 
 1490270046 e:\codeblocks\studentmanagement\tools.h
@@ -53,11 +54,11 @@
 
 1490266283 e:\codeblocks\studentmanagement\statistics.h
 
-1490366264 e:\codeblocks\studentmanagement\users.h
+1490833324 e:\codeblocks\studentmanagement\users.h
 	<fstream>
 	<sstream>
 
-1490270046 e:\codeblocks\studentmanagement\controller.h
+1490833362 e:\codeblocks\studentmanagement\controller.h
 	"file_io.h"
 	"tools.h"
 	"display.h"

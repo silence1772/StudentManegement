@@ -40,6 +40,7 @@ void Controller()
         switch(opt)
         {
         case 1:
+            ClearScreen(30, 6, 36, 26);
             u.SetPsw();
             break;
         case 2:
@@ -47,30 +48,35 @@ void Controller()
             break;
         case 3:
             {
+                ClearScreen(30, 6, 36, 26);
                 Input i;
                 i.Start();
             }
             break;
         case 4:
             {
+                ClearScreen(30, 6, 36, 26);
                 Modify md;
                 md.Start();
             }
             break;
         case 5:
             {
+                ClearScreen(30, 6, 36, 26);
                 Delete d;
                 d.Start();
             }
             break;
         case 6:
             {
+                ClearScreen(30, 6, 36, 26);
                 Query q;
                 q.Start();
             }
             break;
         case 7:
             {
+                ClearScreen(30, 6, 36, 26);
                 Statistics s;
                 s.Start();
             }
